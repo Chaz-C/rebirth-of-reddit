@@ -1,39 +1,10 @@
 @import './scss/partials/reset';
 @import './scss/partials/clearfix';
-
-$breakpoints: (
-  'medium': 769px,
-  'large':  1200px
-) !default;
-
-// Found this Mixin at CSS-Tricks
-/// Mixin to manage responsive breakpoints
-/// @author Hugo Giraudel
-/// @param {String} $breakpoint - Breakpoint name
-/// @require $breakpoints
-@mixin respond-to($breakpoint) {
-  // If the key exists in the map
-  @if map-has-key($breakpoints, $breakpoint) {
-    // Prints a media query based on the value
-    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  }
-
-  // If the key doesn't exist in the map
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Available breakpoints are: #{map-keys($breakpoints)}.";
-  }
-}
-
+@import './scss/partials/mixins';
 
 body {
   background-image: url("../assets/bg.jpg");
-  // padding: 0px;
 }
-
-//height 65px
 
 #title {
   height: 65px;
@@ -42,8 +13,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  // text-align: center;
-  // overflow: auto;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
@@ -78,7 +47,6 @@ body {
   justify-content: center;
   margin-right: 15px;
   transition: background 0.3s;
-  // position: absolute;
   &:hover {
     background-color: #F1592A;
     border: 2px #F1592A solid;
@@ -100,7 +68,6 @@ body {
   height: 45px;
   width: 100%;
   background-color: #3A3A3C;
-  // margin-bottom: 27px;
   text-align: center;
   line-height: 45px;
   color: #818285;
@@ -121,7 +88,6 @@ body {
   }
 
   @include respond-to('medium') {
-    // display: flex;
     flex: 0 0 10.3%;
   }
 
@@ -132,8 +98,6 @@ body {
 
   @include respond-to('medium') {
     display: flex;
-    // flex: 0 0 3%;
-    // width: 10px;
   }
 }
 
@@ -182,11 +146,8 @@ body {
   }
 }
 
-// 46.25%
-
 .card-box {
   margin-bottom: 13px;
-  // width: 325px;
   height: 435px;
   text-align: center;
   background-color: #FFFFFF;
@@ -228,18 +189,6 @@ body {
   margin-left: 25.75px;
   margin-right: 25.75px;
 }
-
-// span {
-//   color: #818285;
-//   transition: color 1s;
-// }
-
-
-// span:hover {
-//   color: #F1592A;
-//   cursor: pointer;
-//   transition: color 0.5s;
-// }
 
 #footer {
   height: 50px;
