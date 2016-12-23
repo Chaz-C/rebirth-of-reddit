@@ -1,0 +1,267 @@
+@import './scss/partials/reset';
+@import './scss/partials/clearfix';
+
+$breakpoints: (
+  'medium': 769px,
+  'large':  1200px
+) !default;
+
+// Found this Mixin at CSS-Tricks
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+
+body {
+  background-image: url("../assets/bg.jpg");
+  // padding: 0px;
+}
+
+//height 65px
+
+#title {
+  height: 65px;
+  width: 100%;
+  background-color: #FFFFFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  // text-align: center;
+  // overflow: auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to('medium') {
+
+    background-image: url('../assets/header_bg.svg');
+  }
+}
+
+#logo {
+  background-image: url('../assets/logo.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+  height: 65px;
+  width: 100%;
+  display: flex;
+  margin-left: 10px;
+
+  @include respond-to('medium') {
+    background-position: center;
+    margin-right: -38px;
+  }
+}
+
+#plus-box {
+  height: 30px;
+  width: 30px;
+  border: 2px #F48254 solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  transition: background 0.3s;
+  // position: absolute;
+  &:hover {
+    background-color: #F1592A;
+    border: 2px #F1592A solid;
+    transition: background 0.3s, border 0.3s;
+  }
+}
+
+#plus-char {
+  color: #B74326;
+  font-size: 1.75rem;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+#nav {
+  height: 45px;
+  width: 100%;
+  background-color: #3A3A3C;
+  // margin-bottom: 27px;
+  text-align: center;
+  line-height: 45px;
+  color: #818285;
+  font-family: 'Oswald';
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#random-link, #my-boards, #get-the-app {
+  flex: 1 0 30%;
+  transition: color 0.5s;
+
+  &:hover {
+  color: #F1592A;
+  cursor: pointer;
+  transition: color 0.5s;
+  }
+
+  @include respond-to('medium') {
+    // display: flex;
+    flex: 0 0 10.3%;
+  }
+
+}
+
+.dot {
+  display: none;
+
+  @include respond-to('medium') {
+    display: flex;
+    // flex: 0 0 3%;
+    // width: 10px;
+  }
+}
+
+#my-boards {
+  border-left: 1px solid #818285;
+  border-right: 1px solid #818285;
+
+  @include respond-to('medium') {
+    border-left: none;
+    border-right: none;
+  }
+}
+
+#content {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 13px 13px 0px 13px;
+
+    @include respond-to('medium') {
+      padding: 40px;
+      justify-content: space-between;
+    }
+
+    @include respond-to('large') {
+      padding-left: 250px;
+      padding-right: 250px;
+      padding-bottom: 0px;
+    }
+
+
+}
+
+.img-box {
+  width: 410px;
+  height: 250px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  @include respond-to('medium') {
+    width: 275px;
+    height: 170px;
+  }
+}
+
+// 46.25%
+
+.card-box {
+  margin-bottom: 13px;
+  // width: 325px;
+  height: 435px;
+  text-align: center;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  transition: outline 0.3s;
+
+  @include respond-to('medium') {
+    flex: 0 0 48%;
+    box-shadow: 15px 15px 20px #3A3A3C;
+    margin-bottom: 25px;
+    height: 330px;
+  }
+
+  @include respond-to('large') {
+
+  }
+
+  &:hover {
+    outline: 5px #F7941E solid;
+    box-sizing: border-box;
+    transition: outline 0.2s;
+  }
+}
+
+.card-title {
+  color: #3A3A3C;
+  font-family: 'Oswald';
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  margin-left: 25.75px;
+  margin-right: 25.75px;
+}
+
+.card-info {
+  color: #818285;
+  font-family: 'Lato';
+  font-size: 0.75rem;
+  margin-left: 25.75px;
+  margin-right: 25.75px;
+}
+
+// span {
+//   color: #818285;
+//   transition: color 1s;
+// }
+
+
+// span:hover {
+//   color: #F1592A;
+//   cursor: pointer;
+//   transition: color 0.5s;
+// }
+
+#footer {
+  height: 50px;
+  width: 100%;
+  background-color: #3A3A3C;
+  margin-top: 15px;
+  text-align: center;
+  display: none;
+
+  @include respond-to('large') {
+    display: block;
+  }
+
+}
+
+svg {
+  margin: 5px;
+  margin-top: 12px;
+}
+
+svg:hover #instagram, svg:hover #fb {
+  fill: #F15A29;
+  transition: fill 0.5s;
+}
+
